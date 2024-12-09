@@ -1,0 +1,36 @@
+<h2 mat-dialog-title class="dialog-title">
+    {{ pagetitle }}
+    <button mat-icon-button class="close-icon" (click)="closepopup()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  <div mat-dialog-content>
+    <form [formGroup]="blogForm">
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Blog Title</mat-label>
+        <input matInput formControlName="title" placeholder="Enter blog title" />
+        <mat-error *ngIf="blogForm.get('title')?.hasError('required')">Title is required</mat-error>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" placeholder="Enter description" rows="4">
+        <mat-error *ngIf="blogForm.get('description')?.hasError('required')">Description is required</mat-error>
+      </mat-form-field>
+  
+    </form>
+  
+  </div>
+  <div mat-dialog-actions align="end">
+  
+    <!-- <button mat-button (click)="closepopup()">Cancel</button>
+     <button mat-raised-button color="primary" class="small-button" (click)="saveAsDraft()">Save as Draft</button> 
+     <button mat-raised-button color="accent" class="small-button" (click)="publishBlog()">Publish</button> -->
+     <div mat-dialog-actions class="left-aligned-actions">
+      <button mat-button (click)="closepopup()">Cancel</button>
+      <button mat-raised-button color="primary" class="small-button" (click)="saveAsDraft()">Save as Draft</button> 
+      <button mat-raised-button color="accent" class="small-button" (click)="publishBlog()">Publish</button>
+    </div>
+  </div>
+  

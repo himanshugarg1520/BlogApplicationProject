@@ -1,0 +1,27 @@
+
+<div class="header">
+    <!-- <button mat-button routerLink="/counter">Counter</button>
+    <button mat-button routerLink="/blog">Blog</button> -->
+  
+    <ng-container *ngIf="isBlogRoute">
+      <mat-form-field appearance="outline" class="search-bar">
+        <mat-label>Search Blogs</mat-label>
+        <input matInput (input)="onSearch($event)" placeholder="Search by title or description" />
+      </mat-form-field>
+  
+      <mat-form-field appearance="outline" class="sort-options">
+        <mat-label>Sort by</mat-label>
+        <mat-select [(value)]="sortoption" (selectionChange)="onSortChange($event.value)">
+          <mat-option value="mostViewed">Most Viewed</mat-option>
+          <mat-option value="mostLiked">Most Liked</mat-option>
+          <mat-option value="mostRecent">Most Recent</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" (click)="addBlog()">Add Blog</button>
+      <button mat-raised-button color="primary" (click)="toggleFavorites()">
+        {{ showFavorites ? 'Show All Blogs' : 'Show Favorite Blogs' }}
+      </button>
+    </ng-container>
+  </div>
+  

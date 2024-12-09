@@ -1,0 +1,29 @@
+/* Reduce button size */
+.small-button {
+    font-size: 12px; 
+    padding: 4px 10px; 
+    min-width: 64px; 
+  }
+  
+  .left-aligned-actions {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+  
+.dialog-title {
+  display: flex;              
+  justify-content: space-between; 
+  align-items: center;       
+  margin: 0;                 
+}
+
+.close-icon {
+    color: #000;              
+    font-size: 16px;          
+    transform: scale(0.7);     
+    margin: -8px;               
+}
+
+.close-icon:hover {
+  color: #f44336;            
+}

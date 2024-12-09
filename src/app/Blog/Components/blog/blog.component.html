@@ -1,0 +1,141 @@
+<!-- 
+
+<app-header   class="sticky-header"
+  (searchEvent)="onSearchEvent($event)"
+  (sortChangeEvent)="onSortChangeEvent($event)"
+  (addBlogEvent)="onAddBlogEvent()"
+  (toggleFavoritesEvent)="onToggleFavoritesEvent($event)">
+</app-header> 
+
+
+<div class="blog-container">
+  <ng-container *ngIf="filteredBlogs; else noBlogs">
+    <mat-card *ngFor="let blog of filteredBlogs" class="blog-card">
+      <mat-card-header>
+        <mat-card-title>{{ blog.title }}</mat-card-title>
+        <mat-card-subtitle>{{ blog.date | date }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <h3>{{ blog.description }}</h3>
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-icon-button color="accent" (click)="likeBlog(blog.id)">
+          <mat-icon>thumb_up</mat-icon>
+          <span>{{ blog.likes }} </span>
+        </button>
+
+        <button mat-icon-button color="primary" (click)="viewBlog(blog.id)">
+          <mat-icon>visibility</mat-icon>
+          <span>{{ blog.views }} </span>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="Removeblog(blog.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" (click)="Editblog(blog.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="primary" class="favorite-button" (click)="markAsFavorite(blog.id)">
+          <mat-icon *ngIf*ngIf="!blog.isFavorite">favorite_border</mat-icon>
+          <mat-icon *ngIf="blog.isFavorite" color="warn">favorite</mat-icon>
+        </button>
+        
+
+        <mat-menu #reactionMenu="matMenu">
+          <button mat-menu-item *ngFor="let reaction of availableReaction" (click)="reactToBlog(blog.id, reaction)">
+            {{ reaction }}
+          </button>
+        </mat-menu>
+        <button mat-button [matMenuTriggerFor]="reactionMenu">React</button>
+      </mat-card-actions>
+    </mat-card>
+  </ng-container>
+
+  <ng-template #noBlogs>
+    <p class="no-blogs-message">No blogs found. Try adjusting your filters or search criteria.</p>
+  </ng-template>
+</div>
+ -->
+
+
+
+
+
+
+ <mat-sidenav-container class="sidenav-container">
+    
+    <mat-sidenav mode="side" opened class="sidenav">
+      <mat-toolbar color="primary">Menu</mat-toolbar>
+       <button mat-button routerLink="/counter" routerLinkActive="active-link">
+        Counter
+      </button>
+      <button mat-button routerLink="/blog" routerLinkActive="active-link">
+        Blog
+      </button>
+    </mat-sidenav>
+  
+    <mat-sidenav-content>
+      <app-header
+        class="sticky-header"
+        (searchEvent)="onSearchEvent($event)"
+        (sortChangeEvent)="onSortChangeEvent($event)"
+        (addBlogEvent)="onAddBlogEvent()"
+        (toggleFavoritesEvent)="onToggleFavoritesEvent($event)">
+      </app-header>
+  
+      <div class="blog-container">
+        <ng-container *ngIf="filteredBlogs">
+          <mat-card *ngFor="let blog of filteredBlogs; else noBlogs;" class="blog-card">
+            <mat-card-header>
+              <mat-card-title>{{ blog.title }}</mat-card-title>
+              <mat-card-subtitle>{{ blog.date | date }}</mat-card-subtitle>
+            </mat-card-header>
+  
+            <mat-card-content>
+              <h3>{{ blog.description }}</h3>
+            </mat-card-content>
+  
+            <mat-card-actions>
+               <button mat-icon-button color="accent" (click)="likeBlog(blog.id)">
+                <mat-icon>thumb_up</mat-icon>
+                <span>{{ blog.likes }}</span>
+              </button>
+  
+               <button mat-icon-button color="primary" (click)="viewBlog(blog.id)">
+                <mat-icon>visibility</mat-icon>
+                <span>{{ blog.views }}</span>
+              </button>
+  
+               <button mat-icon-button color="warn" (click)="Removeblog(blog.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="primary" (click)="Editblog(blog.id)">
+                <mat-icon>edit</mat-icon>
+              </button>
+  
+              <button mat-icon-button color="primary" (click)="markAsFavorite(blog.id)">
+                <mat-icon *ngIf="!blog.isFavorite">favorite_border</mat-icon>
+                <mat-icon *ngIf="blog.isFavorite" color="warn">favorite</mat-icon>
+              </button>
+  
+              <mat-menu #reactionMenu="matMenu">
+                <button mat-menu-item *ngFor="let reaction of availableReaction" (click)="reactToBlog(blog.id, reaction)">
+                  {{ reaction }}
+                </button>
+              </mat-menu>
+              <button mat-button [matMenuTriggerFor]="reactionMenu">React</button>
+            </mat-card-actions>
+          </mat-card>
+        </ng-container>
+  
+        <ng-template #noBlogs>
+          <p class="no-blogs-message">No blogs found. Try adjusting your filters or search criteria.</p>
+        </ng-template>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

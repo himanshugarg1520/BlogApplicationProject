@@ -1,0 +1,19 @@
+/* header.component.css */
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    /* background-color: #3f51b5; */
+    background-color: rgb(143, 130, 130);
+  }
+  
+  button {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    background-color: white;
+    cursor: pointer;
+  }
+ 
